@@ -124,6 +124,8 @@ namespace custom
         class BNode;
         BNode* root;              // root node of the binary search tree
         size_t numElements;        // number of elements currently in the tree
+
+        void deleteBinaryTree(BNode*& p) noexcept;
     };
 
 
@@ -204,49 +206,53 @@ namespace custom
         // constructors and assignment
         iterator(BNode* p = nullptr)
         {
-            // ---------- (Brayden Code to Complete) ----------
+            pNode = p;
         }
         iterator(const iterator& rhs)
         {
-            // ---------- (Brayden Code to Complete) ----------
+            pNode = rhs.pNode;
         }
         iterator& operator = (const iterator& rhs)
         {
-            // ---------- (Brayden Code to Complete) ----------
+            if (this != &rhs)
+            {
+                pNode = rhs.pNode;
+            }
+
             return *this;
         }
 
         // compare
         bool operator == (const iterator& rhs) const
         {
-            // ---------- (Brayden Code to Complete) ----------
-            return true;
+            return pNode == rhs.pNode;
         }
         bool operator != (const iterator& rhs) const
         {
-            // ---------- (Brayden Code to Complete) ----------
-            return true;
+            return pNode != rhs.pNode;
         }
 
         // de-reference. Cannot change because it will invalidate the BST
         const T& operator * () const
         {
-            // ---------- (Brayden Code to Complete) ----------
-            return *(new T);
+            assert(pNode != nullptr);
+            return pNode->data;
         }
 
         // increment and decrement
         iterator& operator ++ ();
         iterator   operator ++ (int postfix)
         {
-            // ---------- (Brayden Code to Complete) ----------
-            return *this;
+            iterator temp(*this);
+            ++(*this);
+            return temp;
         }
         iterator& operator -- ();
         iterator   operator -- (int postfix)
         {
-            // ---------- (Brayden Code to Complete) ----------
-            return *this;
+            iterator temp(*this);
+            --(*this);
+            return temp;
         }
 
         // must give friend status to remove so it can call getNode() from it
@@ -501,7 +507,25 @@ namespace custom
     template <typename T>
     void BST <T> ::clear() noexcept
     {
-        // ---------- (Brayden Code to Complete) ----------
+       deleteBinaryTree(root);
+       numElements = 0;
+    }
+
+    /*****************************************************
+     * BST :: DELETE BINARY TREE
+     * Core, recursive helper for CLEAR
+     ****************************************************/
+    template <typename T>
+    void BST<T>::deleteBinaryTree(BNode*& pNode) noexcept
+    {
+       if (pNode == nullptr)
+          return;
+
+       deleteBinaryTree(pNode->pLeft);
+       deleteBinaryTree(pNode->pRight);
+
+       delete pNode;
+       pNode = nullptr;
     }
 
     /*****************************************************
@@ -511,9 +535,15 @@ namespace custom
     template <typename T>
     typename BST <T> ::iterator custom::BST <T> ::begin() const noexcept
     {
-        // ---------- (Brayden Code to Complete) ----------
-        return end();
-
+        // Empty tree
+        if (root == nullptr)
+           return end();
+        
+        // Start at root, walk pLeft till null
+        BNode* pCur = root;
+        while (pCur->pLeft != nullptr)
+           pCur = pCur->pLeft;
+        return iterator(pCur);
     }
 
 
@@ -524,7 +554,16 @@ namespace custom
     template <typename T>
     typename BST <T> ::iterator BST<T> ::find(const T& t)
     {
-        // ---------- (Brayden Code to Complete) ----------
+        BNode* pCur = root;
+        while (pCur != nullptr)
+        {
+           if (t == pCur->data) // found it
+              return iterator(pCur);
+           else if (t < pCur->data) // go left
+              pCur = pCur->pLeft;
+           else // go right
+              pCur = pCur->pRight;
+        }
         return end();
     }
 

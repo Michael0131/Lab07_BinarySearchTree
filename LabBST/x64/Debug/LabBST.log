@@ -1,8 +1,8 @@
 ﻿  testBST.cpp
-C:\Users\Michael J\Source\Repos\Lab07_BinarySearchTree\testBST.h(133,18): warning C4312: 'type cast': conversion from 'unsigned int' to 'custom::BST<Spy>::BNode *' of greater size
+C:\Users\mathk\OneDrive\Documents\To Laptop - Doc\BYU-I\Winter 2026 Semester\Designing Data Structures\Lab07_BinarySearchTree\testBST.h(133,18): warning C4312: 'type cast': conversion from 'unsigned int' to 'custom::BST<Spy>::BNode *' of greater size
   (compiling source file 'testBST.cpp')
   
-C:\Users\Michael J\Source\Repos\Lab07_BinarySearchTree\testBST.h(158,22): warning C4312: 'type cast': conversion from 'unsigned int' to 'custom::BST<Spy>::BNode *' of greater size
+C:\Users\mathk\OneDrive\Documents\To Laptop - Doc\BYU-I\Winter 2026 Semester\Designing Data Structures\Lab07_BinarySearchTree\testBST.h(158,22): warning C4312: 'type cast': conversion from 'unsigned int' to 'custom::BST<Spy>::BNode *' of greater size
   (compiling source file 'testBST.cpp')
   
-  LabBST.vcxproj -> C:\Users\Michael J\source\repos\Lab07_BinarySearchTree\x64\Debug\LabBST.exe
+  LabBST.vcxproj -> C:\Users\mathk\OneDrive\Documents\To Laptop - Doc\BYU-I\Winter 2026 Semester\Designing Data Structures\Lab07_BinarySearchTree\x64\Debug\LabBST.exe
