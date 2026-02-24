@@ -143,19 +143,16 @@ namespace custom
         //
         BNode()
         {
-            // ---------- (Michael Code to Complete) ----------
             pLeft = pRight = pParent = nullptr;
             isRed = false;
         }
         BNode(const T& t) : data(t)
         {
-            // ---------- (Michael Code to Complete) ----------
             pLeft = pRight = pParent = nullptr;
             isRed = false;
         }
         BNode(T&& t) : data(std::move(t))
         {
-            // ---------- (Michael Code to Complete) ----------
             pLeft = pRight = pParent = nullptr;
             isRed = false;
         }
@@ -280,7 +277,6 @@ namespace custom
     template <typename T>
     BST <T> ::BST()
     {
-        // ---------- (Michael Code to Complete) ----------
         root = nullptr;
         numElements = 0;
     }
@@ -292,7 +288,6 @@ namespace custom
     template <typename T>
     BST <T> ::BST(const BST<T>& rhs)
     {
-        // ---------- (James Code to Complete) ----------
         root = nullptr;
         numElements = 0;
         *this = rhs;
@@ -306,7 +301,6 @@ namespace custom
     template <typename T>
     BST <T> ::BST(BST <T>&& rhs)
     {
-        // ---------- (James Code to Complete) ----------
         root = rhs.root;
         numElements = rhs.numElements;
         rhs.root = nullptr;
@@ -320,7 +314,6 @@ namespace custom
     template <typename T>
     BST <T> ::BST(const std::initializer_list<T>& il)
     {
-        // ---------- (James Code to Complete) ----------
        root = nullptr;
        numElements = 0;
        *this = il;
@@ -332,7 +325,6 @@ namespace custom
     template <typename T>
     BST <T> :: ~BST()
     {
-        // ---------- (Michael Code to Complete) ----------
         clear();
     }
 
@@ -344,12 +336,41 @@ namespace custom
     template <typename T>
     BST <T>& BST <T> :: operator = (const BST <T>& rhs)
     {
-        // ---------- (James Code to Complete) ----------
-        clear();
-        /*
-        for (const T& element : rhs)
-            insert(element);
-         */
+        if (this == &rhs)
+          return *this;
+
+        // Define the recursive assign logic locally to reuse nodes
+        auto recursiveAssign = [&](auto& self, BNode*& pDest, const BNode* pSrc, BNode* pParent) -> void
+           {
+              // 1. Source is empty: delete whatever is left in destination
+              if (pSrc == nullptr)
+              {
+                 deleteBinaryTree(pDest);
+                 return;
+              }
+
+              // 2. Destination is empty: create a new node (Copy Constructor)
+              if (pDest == nullptr)
+              {
+                 pDest = new BNode(pSrc->data);
+                 pDest->pParent = pParent;
+              }
+              // 3. Both exist: reuse the existing node (Assignment Operator)
+              else
+              {
+                 pDest->data = pSrc->data;
+              }
+
+              // Recursively synchronize the children
+              self(self, pDest->pLeft, pSrc->pLeft, pDest);
+              self(self, pDest->pRight, pSrc->pRight, pDest);
+           };
+
+        // Synchronize the trees starting from the root
+        recursiveAssign(recursiveAssign, this->root, rhs.root, nullptr);
+
+        
+        this->numElements = rhs.numElements;
         return *this;
     }
 
@@ -360,7 +381,6 @@ namespace custom
     template <typename T>
     BST <T>& BST <T> :: operator = (const std::initializer_list<T>& il)
     {
-        // ---------- (James Code to Complete) ----------
         clear();
         for (const T& t : il)
             insert(t);
@@ -374,7 +394,6 @@ namespace custom
     template <typename T>
     BST <T>& BST <T> :: operator = (BST <T>&& rhs)
     {
-        // ---------- (James Code to Complete) ----------
         clear();
         swap(rhs);
         return *this;
@@ -387,7 +406,6 @@ namespace custom
     template <typename T>
     void BST <T> ::swap(BST <T>& rhs)
     {
-        // ---------- (James Code to Complete) ----------
         BNode* tempRoot = rhs.root;
         rhs.root = root;
         root = tempRoot;
@@ -403,7 +421,6 @@ namespace custom
      * Insert a node at a given location in the tree
      ****************************************************/
 
-     // ---------- (Michael Code to Complete) ----------
     template <typename T>
     std::pair<typename BST <T> ::iterator, bool> BST <T> ::insert(const T& t, bool keepUnique)
     {
@@ -456,7 +473,6 @@ namespace custom
         ++numElements;
         return std::pair<iterator, bool>(iterator(pNew), true);
     }
-    // ---------- (Michael Code to Complete) ----------
     template <typename T>
     std::pair<typename BST <T> ::iterator, bool> BST <T> ::insert(T&& t, bool keepUnique)
     {
@@ -520,6 +536,8 @@ namespace custom
        if (!it.pNode)
           return end();
 
+       iterator itNext = it;
+       itNext++;
        // Case 1: No children
        if (it.pNode->pLeft == nullptr && it.pNode->pRight == nullptr)
        {
@@ -566,11 +584,39 @@ namespace custom
        // Case 4: Two children (not implemented yet)
        else
        {
-          return end();
+          // Unlink Successor from its current position
+          if (itNext.pNode->pParent->pLeft == itNext.pNode)
+             itNext.pNode->pParent->pLeft = itNext.pNode->pRight;
+          else
+             itNext.pNode->pParent->pRight = itNext.pNode->pRight;
+
+          if (itNext.pNode->pRight)
+             itNext.pNode->pRight->pParent = itNext.pNode->pParent;
+
+          // Point Successor to it.pNode's old children
+          itNext.pNode->pLeft = it.pNode->pLeft;
+          if (it.pNode->pLeft)
+             it.pNode->pLeft->pParent = itNext.pNode;
+
+          itNext.pNode->pRight = it.pNode->pRight;
+          if (it.pNode->pRight)
+             it.pNode->pRight->pParent = itNext.pNode;
+
+          // Point Successor to it.pNode's old parent
+          itNext.pNode->pParent = it.pNode->pParent;
+          if (it.pNode->pParent == nullptr)
+             root = itNext.pNode;
+          else if (it.pNode->pParent->pLeft == it.pNode)
+             it.pNode->pParent->pLeft = itNext.pNode;
+          else
+             it.pNode->pParent->pRight = itNext.pNode;
+
+          // Clean up
+          delete it.pNode;
        }
 
        numElements--;
-       return end();
+       return itNext;
     }
 
     /*****************************************************
@@ -656,7 +702,6 @@ namespace custom
     template <typename T>
     void BST <T> ::BNode::addLeft(BNode* pNode)
     {
-        // ---------- (Michael Code to Complete) ----------
         pLeft = pNode;
         if (pNode)
             pNode->pParent = this;
@@ -669,7 +714,6 @@ namespace custom
     template <typename T>
     void BST <T> ::BNode::addRight(BNode* pNode)
     {
-        // ---------- (Michael Code to Complete) ----------
         pRight = pNode;
         if (pNode)
             pNode->pParent = this;
@@ -682,7 +726,6 @@ namespace custom
     template <typename T>
     void BST<T> ::BNode::addLeft(const T& t)
     {
-        // ---------- (Michael Code to Complete) ----------
         addLeft(new BNode(t));
     }
 
@@ -693,7 +736,6 @@ namespace custom
     template <typename T>
     void BST<T> ::BNode::addLeft(T&& t)
     {
-        // ---------- (Michael Code to Complete) ----------
         addLeft(new BNode(std::move(t)));
     }
 
@@ -704,7 +746,6 @@ namespace custom
     template <typename T>
     void BST <T> ::BNode::addRight(const T& t)
     {
-        // ---------- (Michael Code to Complete) ----------
         addRight(new BNode(t));
     }
 
@@ -715,7 +756,6 @@ namespace custom
     template <typename T>
     void BST <T> ::BNode::addRight(T&& t)
     {
-        // ---------- (Michael Code to Complete) ----------
         addRight(new BNode(std::move(t)));
     }
 
@@ -736,7 +776,6 @@ namespace custom
     template <typename T>
     typename BST <T> ::iterator& BST <T> ::iterator :: operator ++ ()
     {
-        // ---------- (Michael Code to Complete) ----------
         if (pNode == nullptr)
             return *this; // ++end() stays end()
 
@@ -768,7 +807,6 @@ namespace custom
     template <typename T>
     typename BST <T> ::iterator& BST <T> ::iterator :: operator -- ()
     {
-        // ---------- (Michael Code to Complete) ----------
         if (pNode == nullptr)
             return *this; // tests expect --end() stays end()
 

@@ -1,18 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\",
+  "WorkspaceRootPath": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\bst.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\bst.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|solutionrelative:bst.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\testBST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\spy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|solutionrelative:spy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\testBST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|solutionrelative:testBST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\testBST.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\testBST.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33A3699D-E53B-4D7D-91F6-08A35D97501E}|LabBST.vcxproj|solutionrelative:testBST.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\crt\\src\\vcruntime\\delete_scalar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +29,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,37 +38,63 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "spy.h",
+              "DocumentMoniker": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\spy.h",
+              "RelativeDocumentMoniker": "spy.h",
+              "ToolTip": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\spy.h",
+              "RelativeToolTip": "spy.h",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAswLUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-24T06:05:12.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "delete_scalar.cpp",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "ViewState": "AgIAABgAAAAAAAAAAAAUwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-24T05:24:11.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "testBST.h",
-              "DocumentMoniker": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\testBST.h",
+              "DocumentMoniker": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\testBST.h",
               "RelativeDocumentMoniker": "testBST.h",
-              "ToolTip": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\testBST.h",
+              "ToolTip": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\testBST.h",
               "RelativeToolTip": "testBST.h",
-              "ViewState": "AgIAALgLAAAAAAAAAAAYwNMLAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANsAAAAAAAAAAAAAALAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-02-24T00:16:19.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "testBST.cpp",
-              "DocumentMoniker": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\testBST.cpp",
+              "DocumentMoniker": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\testBST.cpp",
               "RelativeDocumentMoniker": "testBST.cpp",
-              "ToolTip": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\testBST.cpp",
+              "ToolTip": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\testBST.cpp",
               "RelativeToolTip": "testBST.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-24T00:16:13.21Z"
+              "WhenOpened": "2026-02-24T00:16:13.21Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "bst.h",
-              "DocumentMoniker": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\bst.h",
+              "DocumentMoniker": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\bst.h",
               "RelativeDocumentMoniker": "bst.h",
-              "ToolTip": "C:\\Users\\mathk\\OneDrive\\Documents\\To Laptop - Doc\\BYU-I\\Winter 2026 Semester\\Designing Data Structures\\Lab07_BinarySearchTree\\bst.h",
+              "ToolTip": "C:\\Users\\jamga\\Documents\\Lab07_BinarySearchTree\\bst.h",
               "RelativeToolTip": "bst.h",
-              "ViewState": "AgIAAPYBAAAAAAAAAAAYwAgCAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAD0BAAAAAAAAAAAcwE4BAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-02-24T00:15:50.666Z",
               "EditorCaption": ""
