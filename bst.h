@@ -287,8 +287,10 @@ namespace custom
     BST <T> ::BST(const BST<T>& rhs)
     {
         // ---------- (James Code to Complete) ----------
-        numElements = 99;
-        root = new BNode;
+        root = nullptr;
+        numElements = 0;
+        *this = rhs;
+        
     }
 
     /*********************************************
@@ -299,8 +301,10 @@ namespace custom
     BST <T> ::BST(BST <T>&& rhs)
     {
         // ---------- (James Code to Complete) ----------
-        numElements = 99;
-        root = new BNode;
+        root = rhs.root;
+        numElements = rhs.numElements;
+        rhs.root = nullptr;
+        rhs.numElements = 0;
     }
 
     /*********************************************
@@ -311,8 +315,9 @@ namespace custom
     BST <T> ::BST(const std::initializer_list<T>& il)
     {
         // ---------- (James Code to Complete) ----------
-        numElements = 99;
-        root = new BNode;
+       root = nullptr;
+       numElements = 0;
+       *this = il;
     }
 
     /*********************************************
@@ -334,6 +339,11 @@ namespace custom
     BST <T>& BST <T> :: operator = (const BST <T>& rhs)
     {
         // ---------- (James Code to Complete) ----------
+        clear();
+        /*
+        for (const T& element : rhs)
+            insert(element);
+         */
         return *this;
     }
 
@@ -345,7 +355,9 @@ namespace custom
     BST <T>& BST <T> :: operator = (const std::initializer_list<T>& il)
     {
         // ---------- (James Code to Complete) ----------
-
+        clear();
+        for (const T& t : il)
+            insert(t);
         return *this;
     }
 
@@ -357,7 +369,8 @@ namespace custom
     BST <T>& BST <T> :: operator = (BST <T>&& rhs)
     {
         // ---------- (James Code to Complete) ----------
-
+        clear();
+        swap(rhs);
         return *this;
     }
 
@@ -369,6 +382,13 @@ namespace custom
     void BST <T> ::swap(BST <T>& rhs)
     {
         // ---------- (James Code to Complete) ----------
+        BNode* tempRoot = rhs.root;
+        rhs.root = root;
+        root = tempRoot;
+
+        size_t tempElements = rhs.numElements;
+        rhs.numElements = numElements;
+        numElements = tempElements;
 
     }
 
@@ -490,8 +510,61 @@ namespace custom
     template <typename T>
     typename BST <T> ::iterator BST <T> ::erase(iterator& it)
     {
-        // ---------- (James Code to Complete) ----------
-        return end();
+       BNode* node = it.pNode;
+       if (!it.pNode)
+          return end();
+
+       // Case 1: No children
+       if (it.pNode->pLeft == nullptr && it.pNode->pRight == nullptr)
+       {
+          if (it.pNode->pParent == nullptr)
+             root = nullptr;
+          else if (it.pNode->pParent->pLeft == it.pNode)
+             it.pNode->pParent->pLeft = nullptr;
+          else
+             it.pNode->pParent->pRight = nullptr;
+
+          delete it.pNode;
+       }
+
+       // Case 2: Left child only
+       else if (it.pNode->pRight == nullptr)
+       {
+          if (it.pNode->pParent == nullptr)
+             root = it.pNode->pLeft;
+          else if (it.pNode->pParent->pLeft == it.pNode)
+             it.pNode->pParent->pLeft = it.pNode->pLeft;
+          else
+             it.pNode->pParent->pRight = it.pNode->pLeft;
+
+          it.pNode->pLeft->pParent = it.pNode->pParent;
+
+          delete it.pNode;
+       }
+
+       // Case 3: Right child only
+       else if (it.pNode->pLeft == nullptr)
+       {
+          if (it.pNode->pParent == nullptr)
+             root = it.pNode->pRight;
+          else if (it.pNode->pParent->pLeft == it.pNode)
+             it.pNode->pParent->pLeft = it.pNode->pRight;
+          else
+             it.pNode->pParent->pRight = it.pNode->pRight;
+
+          it.pNode->pRight->pParent = it.pNode->pParent;
+
+          delete it.pNode;
+       }
+
+       // Case 4: Two children (not implemented yet)
+       else
+       {
+          return end();
+       }
+
+       numElements--;
+       return end();
     }
 
     /*****************************************************
